@@ -1,0 +1,8 @@
+.MixList-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.MixList-listItem {
+    flex: 25%;
+}
