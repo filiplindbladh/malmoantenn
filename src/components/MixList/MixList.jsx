@@ -15,9 +15,7 @@ export default class MixList extends Component {
 
     componentWillMount() {
         axios
-            .get(
-                `https://api.mixcloud.com/malmoantenn/feed/?code=${apiKey}?offset=0`
-            )
+            .get(`https://api.mixcloud.com/malmoantenn/feed/?code=${apiKey}`)
             .then(res => {
                 const format = Object.entries(res.data.data)
                     .map(item => {
