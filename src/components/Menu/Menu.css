@@ -1,0 +1,10 @@
+.Menu {
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid lightgrey;
+}
+
+.logo {
+    height: 55px;
+}

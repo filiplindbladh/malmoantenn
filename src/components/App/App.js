@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import "./App.css";
 import MixList from "../MixList/MixList";
-import Header from "../Header/Header";
+import Menu from "../Menu/Menu";
 
 class App extends Component {
     render() {
         return (
             <div className="App">
-                <Header />
+                <Menu />
                 <MixList />
             </div>
         );
