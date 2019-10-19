@@ -6,6 +6,7 @@
 .MixList-listItem {
     width: 25%;
     justify-content: flex-start;
+    cursor: pointer;
 }
 
 .Page-container {

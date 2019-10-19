@@ -8,7 +8,10 @@ const MixList = ({ mixes }) => {
             <ul className="MixList-list">
                 {mixes &&
                     mixes.map(mix => (
-                        <li className="MixList-listItem">
+                        <li
+                            key={mix && mix.created_time}
+                            className="MixList-listItem"
+                        >
                             <MixCard
                                 name={mix && mix.name}
                                 url={mix && mix.url}

@@ -15,7 +15,9 @@ const MixCard = ({ url, picture, name, created, tags }) => {
                 {tags && (
                     <div className="Tags-container">
                         {tags.slice(0, 2).map(tag => (
-                            <p className="Tag">{tag.name}</p>
+                            <span key={tag.name} className="Tag">
+                                {tag.name}
+                            </span>
                         ))}
                     </div>
                 )}
