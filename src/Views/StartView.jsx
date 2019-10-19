@@ -4,6 +4,7 @@ import MixList from "../components/MixList/MixList";
 import Menu from "../components/Menu/Menu";
 import axios from "axios";
 import { apiKey } from "../apiKey";
+import "./StartView.css";
 
 export default class StartView extends Component {
     constructor(props) {
@@ -11,20 +12,31 @@ export default class StartView extends Component {
 
         this.state = {
             mixes: [],
+            next: "",
+            prev: "",
         };
     }
 
     componentWillMount() {
         axios
-            .get(`https://api.mixcloud.com/malmoantenn/feed/?code=${apiKey}`)
+            .get(
+                `https://api.mixcloud.com/malmoantenn/cloudcasts/?code=${apiKey}`
+            )
             .then(res => {
-                const format = Object.entries(res.data.data)
-                    .map(item => {
-                        return item[1].cloudcasts;
-                    })
-                    .flat()
-                    .filter(i => i);
-                this.setState({ mixes: [...format] });
+                this.setState({ mixes: res.data.data });
+                this.setState({ next: res.data.paging.next });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+    }
+
+    paginate() {
+        axios
+            .get(this.state.next)
+            .then(res => {
+                const joined = this.state.mixes.concat(res.data.data);
+                this.setState({ mixes: joined });
             })
             .catch(function(error) {
                 console.log(error);
@@ -36,6 +48,9 @@ export default class StartView extends Component {
                 <Menu />
                 <Header />
                 <MixList mixes={this.state.mixes} />
+                <div className="Pagination-buttonContainer">
+                    <button onClick={e => this.paginate()}>Visa fler</button>
+                </div>
             </div>
         );
     }
