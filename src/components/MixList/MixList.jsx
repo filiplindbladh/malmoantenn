@@ -45,6 +45,7 @@ export default class MixList extends Component {
                                         item && item.created_time.slice(0, 10)
                                     }
                                     picture={item && item.pictures.large}
+                                    tags={item && item.tags}
                                 />
                             </li>
                         ))}
