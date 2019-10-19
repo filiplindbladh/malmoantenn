@@ -7,4 +7,5 @@
 .Header-img {
     object-fit: contain;
     height: calc(100vh - 146px);
+    width: 100%;
 }

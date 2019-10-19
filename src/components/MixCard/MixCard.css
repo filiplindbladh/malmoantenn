@@ -30,6 +30,7 @@
     margin-right: 6px;
     font-size: 1rem;
     border-radius: 4px;
+    text-transform: uppercase;
 }
 .Tags-container {
     display: flex;

@@ -1,56 +1,26 @@
-import React, { Component } from "react";
-import axios from "axios";
-import { apiKey } from "../../apiKey";
+import React from "react";
 import MixCard from "../MixCard/MixCard";
 import "./MixList.css";
 
-export default class MixList extends Component {
-    constructor(props) {
-        super(props);
+const MixList = ({ mixes }) => {
+    return (
+        <div className="Page-container">
+            <ul className="MixList-list">
+                {mixes &&
+                    mixes.map(mix => (
+                        <li className="MixList-listItem">
+                            <MixCard
+                                name={mix && mix.name}
+                                url={mix && mix.url}
+                                created={mix && mix.created_time.slice(0, 10)}
+                                picture={mix && mix.pictures.large}
+                                tags={mix && mix.tags}
+                            />
+                        </li>
+                    ))}
+            </ul>
+        </div>
+    );
+};
 
-        this.state = {
-            mixes: [],
-        };
-    }
-
-    componentWillMount() {
-        axios
-            .get(`https://api.mixcloud.com/malmoantenn/feed/?code=${apiKey}`)
-            .then(res => {
-                const format = Object.entries(res.data.data)
-                    .map(item => {
-                        return item[1].cloudcasts;
-                    })
-                    .flat()
-                    .filter(i => i);
-                this.setState({ mixes: [...format] });
-            })
-            .catch(function(error) {
-                console.log(error);
-            });
-    }
-    render() {
-        console.log("state", this.state.mixes);
-
-        return (
-            <div className="Page-container">
-                <ul className="MixList-list">
-                    {this.state.mixes &&
-                        this.state.mixes.map(item => (
-                            <li className="MixList-listItem">
-                                <MixCard
-                                    name={item && item.name}
-                                    url={item && item.url}
-                                    created={
-                                        item && item.created_time.slice(0, 10)
-                                    }
-                                    picture={item && item.pictures.large}
-                                    tags={item && item.tags}
-                                />
-                            </li>
-                        ))}
-                </ul>
-            </div>
-        );
-    }
-}
+export default MixList;
