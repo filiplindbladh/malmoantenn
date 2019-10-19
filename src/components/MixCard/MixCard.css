@@ -1,4 +1,15 @@
 .MixCard {
-    padding: 12px;
     cursor: pointer;
+    padding: 12px;
+}
+
+.Heading {
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 1.3;
+    margin-top: 12px;
+}
+
+.Card-info {
+    padding: 12px;
 }

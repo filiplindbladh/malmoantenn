@@ -21,7 +21,8 @@ export default class MixList extends Component {
                     .map(item => {
                         return item[1].cloudcasts;
                     })
-                    .flat();
+                    .flat()
+                    .filter(i => i);
                 this.setState({ mixes: [...format] });
             })
             .catch(function(error) {
@@ -32,7 +33,7 @@ export default class MixList extends Component {
         console.log("state", this.state.mixes);
 
         return (
-            <div>
+            <div className="Page-container">
                 <ul className="MixList-list">
                     {this.state.mixes &&
                         this.state.mixes.map(item => (
