@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import MixList from "../../components/MixList/MixList";
-import Menu from "../../components/Menu/Menu";
 import axios from "axios";
 import { apiKey } from "../../apiKey";
 
