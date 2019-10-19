@@ -1,0 +1,9 @@
+.Header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.Header-img {
+    object-fit: contain;
+    height: calc(100vh - 146px);
+}
