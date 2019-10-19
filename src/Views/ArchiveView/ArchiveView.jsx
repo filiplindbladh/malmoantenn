@@ -12,6 +12,7 @@ export default class ArchiveView extends Component {
             mixes: [],
             next: "",
             prev: "",
+            isLoading: true,
         };
     }
 
@@ -21,7 +22,7 @@ export default class ArchiveView extends Component {
                 `https://api.mixcloud.com/malmoantenn/cloudcasts/?code=${apiKey}`
             )
             .then(res => {
-                this.setState({ mixes: res.data.data });
+                this.setState({ mixes: res.data.data, isLoading: false });
                 this.setState({ next: res.data.paging.next });
             })
             .catch(function(error) {
@@ -44,7 +45,11 @@ export default class ArchiveView extends Component {
         return (
             <div className="Page-container">
                 <h1>Archive</h1>
-                <MixList mixes={this.state.mixes} />
+                {this.state.isLoading ? (
+                    <div>Loading...</div>
+                ) : (
+                    <MixList mixes={this.state.mixes} />
+                )}
                 <div className="Pagination-buttonContainer">
                     <button onClick={e => this.paginate()}>Show more</button>
                 </div>
