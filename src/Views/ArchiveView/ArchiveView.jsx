@@ -1,12 +1,10 @@
 import React, { Component } from "react";
-import Header from "../components/Header/Header";
-import MixList from "../components/MixList/MixList";
-import Menu from "../components/Menu/Menu";
+import MixList from "../../components/MixList/MixList";
+import Menu from "../../components/Menu/Menu";
 import axios from "axios";
-import { apiKey } from "../apiKey";
-import "./StartView.css";
+import { apiKey } from "../../apiKey";
 
-export default class StartView extends Component {
+export default class ArchiveView extends Component {
     constructor(props) {
         super(props);
 
@@ -44,12 +42,11 @@ export default class StartView extends Component {
     }
     render() {
         return (
-            <div className="StartView">
-                <Menu />
-                <Header />
+            <div className="Page-container">
+                <h1>Archive</h1>
                 <MixList mixes={this.state.mixes} />
                 <div className="Pagination-buttonContainer">
-                    <button onClick={e => this.paginate()}>Visa fler</button>
+                    <button onClick={e => this.paginate()}>Show more</button>
                 </div>
             </div>
         );

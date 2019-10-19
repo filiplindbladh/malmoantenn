@@ -6,13 +6,16 @@ import { Link } from "react-router-dom";
 const Menu = () => {
     return (
         <nav className="Menu">
-            <ul>
-                <li>
+            <ul className="Menu-navList">
+                <li className="Menu-navItem">
                     <Link to="/">Home</Link>
+                </li>
+                <li>
+                    <Link to="/archive">Archive</Link>
                 </li>
             </ul>
             <Link to="/">
-                <img className="logo" src={logo} alt="logo" />
+                <img className="Logo" src={logo} alt="logo" />
             </Link>
             <div>Socials</div>
         </nav>

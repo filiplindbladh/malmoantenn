@@ -6,6 +6,14 @@
     border: 1px solid lightgrey;
 }
 
-.logo {
+.Logo {
     height: 55px;
+}
+
+.Menu-navList {
+    display: flex;
+}
+
+.Menu-navItem {
+    margin-right: 12px;
 }
