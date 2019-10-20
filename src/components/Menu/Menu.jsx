@@ -24,9 +24,9 @@ const Menu = () => {
                 <img className="Logo" src={logo} alt="logo" />
             </Link>
             <div className="Menu-socials">
-                <FontAwesomeIcon size="2x" icon={faInstagram} />
-                <FontAwesomeIcon size="2x" icon={faFacebook} />
-                <FontAwesomeIcon size="2x" icon={faMixcloud} />
+                <a href="https://www.instagram.com/malmoantenn/"><FontAwesomeIcon size="2x" icon={faInstagram} /></a>
+                <a href="https://www.facebook.com/mlmantenn/"><FontAwesomeIcon size="2x" icon={faFacebook} /></a>
+                <a href="https://www.mixcloud.com/malmoantenn/"><FontAwesomeIcon size="2x" icon={faMixcloud} /></a>
             </div>
         </nav>
     );
