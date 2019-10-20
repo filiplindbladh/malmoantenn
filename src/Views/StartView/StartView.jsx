@@ -31,11 +31,13 @@ export default class StartView extends Component {
         return (
             <div className="StartView">
                 <Header />
-                <MixList mixes={this.state.mixes.slice(0, 8)} />
-                <div className="Pagination-buttonContainer">
-                    <Link to="/archive">
-                        <button>See more</button>
-                    </Link>
+                <div className="Page-container">
+                    <MixList mixes={this.state.mixes.slice(0, 8)} />
+                    <div className="Pagination-buttonContainer">
+                        <Link to="/archive">
+                            <button>See more</button>
+                        </Link>
+                    </div>
                 </div>
             </div>
         );

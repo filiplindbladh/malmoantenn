@@ -3,6 +3,12 @@
     padding-right: 32px;
 }
 
+@media only screen and (max-width: 440px) {
+    .MixCard {
+        padding-right: 16px;
+    }
+}
+
 .Heading {
     font-size: 1.5rem;
     font-weight: 500;

@@ -4,7 +4,7 @@ import "./MixList.css";
 
 const MixList = ({ mixes }) => {
     return (
-        <div className="Page-container">
+        <div>
             <ul className="MixList-list">
                 {mixes &&
                     mixes.map(mix => (
