@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import MixList from "../../components/MixList/MixList";
 import axios from "axios";
 import { apiKey } from "../../apiKey";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faSpinner } from "@fortawesome/free-solid-svg-icons";
 
 export default class ArchiveView extends Component {
     constructor(props) {
@@ -45,13 +47,19 @@ export default class ArchiveView extends Component {
             <div className="Page-container">
                 <h1>Archive</h1>
                 {this.state.isLoading ? (
-                    <div>Loading...</div>
+                    <div className="Spinner">
+                        <FontAwesomeIcon size="5x" icon={faSpinner} />
+                    </div>
                 ) : (
-                    <MixList mixes={this.state.mixes} />
+                    <>
+                        <MixList mixes={this.state.mixes} />
+                        <div className="Pagination-buttonContainer">
+                            <button onClick={e => this.paginate()}>
+                                Show more
+                            </button>
+                        </div>
+                    </>
                 )}
-                <div className="Pagination-buttonContainer">
-                    <button onClick={e => this.paginate()}>Show more</button>
-                </div>
             </div>
         );
     }
