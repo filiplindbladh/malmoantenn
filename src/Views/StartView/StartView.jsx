@@ -32,7 +32,7 @@ export default class StartView extends Component {
             <div className="StartView">
                 <Header />
                 <div className="Page-container">
-                    <MixList mixes={this.state.mixes.slice(0, 8)} />
+                    <MixList mixes={this.state.mixes.slice(0, 8)} isStartPage />
                     <div className="Pagination-buttonContainer">
                         <Link to="/archive">
                             <button>See more</button>
