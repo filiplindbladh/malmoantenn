@@ -32,7 +32,7 @@ const MixList = ({ mixes, isStartPage, search = "" }) => {
             {filter(mixes).length === 0 ? (
                 <div className="MixList-Error">
                     <FontAwesomeIcon size="2x" icon={faExclamationTriangle} />
-                    <p>No mixes found! Try something else</p>
+                    <p>No results found for "{search}".</p>
                 </div>
             ) : (
                 <Masonry
