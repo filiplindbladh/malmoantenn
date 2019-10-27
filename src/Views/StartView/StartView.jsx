@@ -47,7 +47,7 @@ export default class StartView extends Component {
                             />
                             <div className="Pagination-buttonContainer">
                                 <Link to="/archive">
-                                    <button>See more</button>
+                                    <button className="Button">See more</button>
                                 </Link>
                             </div>
                         </div>
