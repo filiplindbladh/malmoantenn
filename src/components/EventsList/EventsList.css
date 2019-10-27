@@ -1,0 +1,30 @@
+.EventsList {
+    display: inline-flex;
+    flex-wrap: wrap;
+    margin-bottom: 48px;
+}
+.EventsList-listItem {
+    display: inline-flex;
+    justify-content: flex-start;
+    cursor: pointer;
+}
+
+.as-link {
+    cursor: pointer;
+}
+
+.as-div {
+    cursor: auto;
+}
+
+@media only screen and (max-width: 1024px) {
+    .EventsList-listItem {
+        width: 50%;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    .EventsList-listItem {
+        width: 100%;
+    }
+}
