@@ -75,6 +75,8 @@ export default class ArchiveView extends Component {
                 <h1>Archive</h1>
                 <input
                     type="search"
+                    className="input"
+                    placeholder="Search"
                     value={this.state.search}
                     onChange={e => this.setState({ search: e.target.value })}
                 />
@@ -90,7 +92,7 @@ export default class ArchiveView extends Component {
                         />
                         <div className="Pagination-buttonContainer">
                             {this.state.next !== "" &&
-                                this.state.searchInitated && (
+                                this.state.search.length === 0 && (
                                     <button
                                         className="Button"
                                         onClick={e => this.paginate()}
