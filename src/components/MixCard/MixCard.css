@@ -5,11 +5,11 @@
 
 @media only screen and (max-width: 440px) {
     .MixCard {
-        padding-right: 16px;
+        padding-right: 0;
     }
 }
 
-.Heading {
+.MixCardHeading {
     font-size: 1.5rem;
     font-weight: 500;
     line-height: 1.3;

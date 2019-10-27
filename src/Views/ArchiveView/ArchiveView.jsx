@@ -72,7 +72,7 @@ export default class ArchiveView extends Component {
     render() {
         return (
             <div className="Page-container">
-                <h1>Archive</h1>
+                <h1 className="Heading-large">Archive</h1>
                 <input
                     type="search"
                     className="input"

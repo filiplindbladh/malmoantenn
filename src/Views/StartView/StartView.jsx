@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import Header from "../../components/Header/Header";
 import MixList from "../../components/MixList/MixList";
+import EventsList from "../../components/EventsList/EventsList";
 import axios from "axios";
 import { apiKey } from "../../apiKey";
 import "./StartView.css";
@@ -14,6 +15,7 @@ export default class StartView extends Component {
 
         this.state = {
             mixes: [],
+            events: [],
             isLoading: true,
         };
     }
@@ -25,6 +27,15 @@ export default class StartView extends Component {
             )
             .then(res => {
                 this.setState({ mixes: res.data.data, isLoading: false });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        axios
+            .get(`http://localhost:8888/mawp/wp-json/tribe/events/v1/events`)
+            .then(res => {
+                console.log(res);
+                this.setState({ events: res.data.events });
             })
             .catch(function(error) {
                 console.log(error);
@@ -41,6 +52,9 @@ export default class StartView extends Component {
                     <>
                         <Header />
                         <div className="Page-container">
+                            <h2 className="Heading-large">Upcoming events</h2>
+                            <EventsList events={this.state.events} />
+                            <h2 className="Heading-large">Listen</h2>
                             <MixList
                                 mixes={this.state.mixes.slice(0, 8)}
                                 isStartPage
