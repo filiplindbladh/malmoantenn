@@ -1,11 +1,38 @@
 .Header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
     height: calc(100vh - 146px);
+    background: rgb(226, 192, 216);
+    background: linear-gradient(
+        180deg,
+        rgba(226, 192, 216, 1) 19%,
+        rgba(236, 224, 140, 1) 81%
+    );
+    position: relative;
 }
-.Header-img {
-    object-fit: contain;
-    height: calc(100vh - 146px);
-    width: 100%;
+
+@keyframes floating {
+    0% {
+        transform: translatey(0px);
+    }
+    50% {
+        transform: translatey(-12px);
+    }
+    100% {
+        transform: translatey(0px);
+    }
+}
+.Float {
+    animation: floating 2s ease-in-out infinite;
+    height: 100%;
+    max-width: 100vw;
+    object-fit: cover;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+.Page-container {
+    position: relative;
+    z-index: 10;
 }
