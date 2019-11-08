@@ -4,6 +4,9 @@ import "./EventsList.css";
 const EventsList = ({ events }) => {
     return (
         <div className="EventsList">
+            {events && events.length >= 1 && (
+                <h2 className="Heading-medium">Upcoming Events</h2>
+            )}
             {events &&
                 events.map(event => {
                     return event && event.website ? (
@@ -48,4 +51,4 @@ const EventsList = ({ events }) => {
     );
 };
 
-export default EventsList;
+export default React.memo(EventsList);

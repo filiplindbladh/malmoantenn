@@ -6,8 +6,7 @@ import axios from "axios";
 import { apiKey } from "../../apiKey";
 import "./StartView.css";
 import { Link } from "react-router-dom";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faYinYang } from "@fortawesome/free-solid-svg-icons";
+import Loader from "../../components/Loader/Loader";
 
 export default class StartView extends Component {
     constructor(props) {
@@ -42,31 +41,22 @@ export default class StartView extends Component {
             });
     }
     render() {
+        if (this.state.isLoading) {
+            return <Loader />;
+        }
         return (
             <div className="StartView">
-                {this.state.isLoading ? (
-                    <div className="Spinner">
-                        <FontAwesomeIcon size="5x" icon={faYinYang} />
+                <Header events={this.state.events} />
+                <div className="Page-container">
+                    <EventsList events={this.state.events} />
+                    <h2 className="Heading-medium">Archive</h2>
+                    <MixList mixes={this.state.mixes.slice(0, 8)} isStartPage />
+                    <div className="Pagination-buttonContainer">
+                        <Link to="/archive">
+                            <button className="Button">See more</button>
+                        </Link>
                     </div>
-                ) : (
-                    <>
-                        <Header />
-                        <div className="Page-container">
-                            <h2 className="Heading-large">Upcoming events</h2>
-                            <EventsList events={this.state.events} />
-                            <h2 className="Heading-large">Listen</h2>
-                            <MixList
-                                mixes={this.state.mixes.slice(0, 8)}
-                                isStartPage
-                            />
-                            <div className="Pagination-buttonContainer">
-                                <Link to="/archive">
-                                    <button className="Button">See more</button>
-                                </Link>
-                            </div>
-                        </div>
-                    </>
-                )}
+                </div>
             </div>
         );
     }

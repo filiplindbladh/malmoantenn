@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import MixList from "../../components/MixList/MixList";
 import axios from "axios";
 import { apiKey } from "../../apiKey";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faYinYang } from "@fortawesome/free-solid-svg-icons";
+import Loader from "../../components/Loader/Loader";
 import { getAllMixes } from "./helpers";
 
 export default class ArchiveView extends Component {
@@ -70,9 +69,12 @@ export default class ArchiveView extends Component {
             });
     }
     render() {
+        if (this.state.isLoading) {
+            return <Loader />;
+        }
         return (
             <div className="Page-container">
-                <h1 className="Heading-large">Archive</h1>
+                <h1 className="Heading-medium">Archive</h1>
                 <input
                     type="search"
                     className="input"
@@ -80,29 +82,17 @@ export default class ArchiveView extends Component {
                     value={this.state.search}
                     onChange={e => this.setState({ search: e.target.value })}
                 />
-                {this.state.isLoading ? (
-                    <div className="Spinner">
-                        <FontAwesomeIcon size="5x" icon={faYinYang} />
-                    </div>
-                ) : (
-                    <>
-                        <MixList
-                            mixes={this.state.mixes}
-                            search={this.state.search}
-                        />
-                        <div className="Pagination-buttonContainer">
-                            {this.state.next !== "" &&
-                                this.state.search.length === 0 && (
-                                    <button
-                                        className="Button"
-                                        onClick={e => this.paginate()}
-                                    >
-                                        Show more
-                                    </button>
-                                )}
-                        </div>
-                    </>
-                )}
+                <MixList mixes={this.state.mixes} search={this.state.search} />
+                <div className="Pagination-buttonContainer">
+                    {this.state.next !== "" && this.state.search.length === 0 && (
+                        <button
+                            className="Button"
+                            onClick={e => this.paginate()}
+                        >
+                            Show more
+                        </button>
+                    )}
+                </div>
             </div>
         );
     }

@@ -57,4 +57,4 @@ const MixList = ({ mixes, isStartPage, search = "" }) => {
     );
 };
 
-export default MixList;
+export default React.memo(MixList);
