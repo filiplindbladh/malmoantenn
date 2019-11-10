@@ -40,7 +40,7 @@ const EventCard = ({
                         {endTime}
                     </span>
                 </p>
-                <h3 className="Heading-medium">{title}</h3>
+                <h3 className="Heading-small">{title}</h3>
                 {description && (
                     <p>{description.replace(/<\/?[^>]+(>|$)/g, "")}</p>
                 )}

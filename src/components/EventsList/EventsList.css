@@ -3,6 +3,10 @@
     flex-wrap: wrap;
     margin-bottom: 48px;
 }
+
+.EventsList-heading {
+    margin-top: 48px;
+}
 .EventsList-listItem {
     display: inline-flex;
     justify-content: flex-start;

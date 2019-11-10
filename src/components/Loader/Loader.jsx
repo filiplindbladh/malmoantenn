@@ -5,7 +5,7 @@ import logo from "../../img/logo.png";
 const Loader = () => {
     return (
         <div className="Loader">
-            <img className="Loader-img-logo rotate" src={logo} />
+            <img className="Loader-img-logo rotate" src={logo} alt="Loader" />
         </div>
     );
 };

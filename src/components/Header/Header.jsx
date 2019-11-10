@@ -1,6 +1,8 @@
 import React from "react";
 import "./Header.css";
-import HeaderLogo from "../../img/Gradient_wave_filil.png";
+import HeaderLogo from "../../img/Gradient_wave_filil.svg";
+import Axios from "axios";
+import LivePlayer from "../LivePlayer/LivePlayer";
 
 const Menu = ({ events }) => {
     // might wanna remove this if we're not gonna use it
@@ -28,12 +30,14 @@ const Menu = ({ events }) => {
     //     console.log(arr);
     //     return arr[0];
     // };
+
     return (
         <div className="Header">
             <img className="Float" src={HeaderLogo} alt="headerlogo" />
             <div className="Page-container">
                 <h1 className="Heading-large">Malmö Antenn</h1>
                 <p>A web based radio from Sweden.</p>
+                <LivePlayer />
             </div>
         </div>
     );

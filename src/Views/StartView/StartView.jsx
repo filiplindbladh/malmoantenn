@@ -25,7 +25,7 @@ export default class StartView extends Component {
                 `https://api.mixcloud.com/malmoantenn/cloudcasts/?code=${apiKey}`
             )
             .then(res => {
-                this.setState({ mixes: res.data.data, isLoading: false });
+                this.setState({ mixes: res.data.data });
             })
             .catch(function(error) {
                 console.log(error);
@@ -33,8 +33,15 @@ export default class StartView extends Component {
         axios
             .get(`http://localhost:8888/mawp/wp-json/tribe/events/v1/events`)
             .then(res => {
+                this.setState({ events: res.data.events, isLoading: false });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
+        axios
+            .get(`https://s2.radio.co/se9588efb3/listen`)
+            .then(res => {
                 console.log(res);
-                this.setState({ events: res.data.events });
             })
             .catch(function(error) {
                 console.log(error);
