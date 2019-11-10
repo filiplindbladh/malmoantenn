@@ -2,19 +2,14 @@ import React from "react";
 import MixCard from "../MixCard/MixCard";
 import "./MixList.css";
 import Masonry from "react-masonry-css";
-import { useMediaQuery } from "react-responsive";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faExclamationTriangle } from "@fortawesome/free-solid-svg-icons";
 
 const MixList = ({ mixes, isStartPage, search = "" }) => {
-    const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
-    const isMobile = useMediaQuery({ query: "(max-width: 440px)" });
-    const columns = () => {
-        if (isMobile) {
-            return 1;
-        } else if (isTablet) {
-            return 2;
-        } else return isStartPage ? 4 : 3;
+    const breakpointColumnsObj = {
+        default: isStartPage ? 4 : 3,
+        1024: 2,
+        440: 1,
     };
 
     const filter = mixes => {
@@ -27,16 +22,19 @@ const MixList = ({ mixes, isStartPage, search = "" }) => {
             return filtered;
         }
     };
+    if (!mixes) {
+        return null;
+    }
     return (
         <div>
-            {filter(mixes).length === 0 ? (
+            {mixes && filter(mixes).length === 0 ? (
                 <div className="MixList-Error">
                     <FontAwesomeIcon size="2x" icon={faExclamationTriangle} />
                     <p>No results found for "{search}".</p>
                 </div>
             ) : (
                 <Masonry
-                    breakpointCols={columns()}
+                    breakpointCols={breakpointColumnsObj}
                     className="my-masonry-grid"
                     columnClassName="MixList-listItem"
                 >

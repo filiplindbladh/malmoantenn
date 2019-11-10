@@ -1,7 +1,6 @@
 import React from "react";
 import "./Header.css";
 import HeaderLogo from "../../img/Gradient_wave_filil.svg";
-import Axios from "axios";
 import LivePlayer from "../LivePlayer/LivePlayer";
 
 const Menu = ({ events }) => {
@@ -37,6 +36,7 @@ const Menu = ({ events }) => {
             <div className="Page-container">
                 <h1 className="Heading-large">Malmö Antenn</h1>
                 <p>A web based radio from Sweden.</p>
+
                 <LivePlayer />
             </div>
         </div>

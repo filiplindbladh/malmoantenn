@@ -9,7 +9,9 @@ const MixCard = ({ url, picture, name, created, tags }) => {
     return (
         <div data-mixcloud-play-button={url} className="MixCard">
             <div className="MixCard-wrapper">
-                <img className="Card-img" src={picture} alt={name}></img>
+                <div className="Card-imgWrapper">
+                    <img className="Card-img" src={picture} alt={name}></img>
+                </div>
                 <div className="Card-info">
                     <span className="Date">{created.replace(/-/g, ".")}</span>
                     <h3 className="Heading-small">{name}</h3>
