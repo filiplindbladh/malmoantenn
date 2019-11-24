@@ -34,7 +34,7 @@ export default class StartView extends Component {
                 console.log(error);
             });
         axios
-            .get(`${wpBaseUri}72`)
+            .get(`${wpBaseUri}/wp-json/tribe/events/v1/events`)
             .then(res => {
                 this.setState({ events: res.data.events, isLoading: false });
             })
