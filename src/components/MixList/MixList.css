@@ -15,6 +15,12 @@
     background-clip: padding-box;
 }
 
+@media only screen and (max-width: 440px) {
+    .MixList-listItem {
+        padding-right: 0;
+    }
+}
+
 .MixList-listItem {
     width: 100% !important;
 }
