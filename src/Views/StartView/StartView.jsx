@@ -3,10 +3,11 @@ import Header from "../../components/Header/Header";
 import MixList from "../../components/MixList/MixList";
 import EventsList from "../../components/EventsList/EventsList";
 import axios from "axios";
-import { apiKey } from "../../apiKey";
+import { apiKey, wpBaseUri } from "../../apiKey";
 import "./StartView.css";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
+import { Helmet } from "react-helmet";
 
 export default class StartView extends Component {
     constructor(props) {
@@ -15,7 +16,9 @@ export default class StartView extends Component {
         this.state = {
             mixes: [],
             events: [],
+            description: "",
             isLoading: true,
+            status: "",
         };
     }
 
@@ -31,7 +34,7 @@ export default class StartView extends Component {
                 console.log(error);
             });
         axios
-            .get(`http://localhost:8888/mawp/wp-json/tribe/events/v1/events`)
+            .get(`${wpBaseUri}72`)
             .then(res => {
                 this.setState({ events: res.data.events, isLoading: false });
             })
@@ -39,28 +42,54 @@ export default class StartView extends Component {
                 console.log(error);
             });
         axios
-            .get(`https://s2.radio.co/se9588efb3/listen`)
+            .get(`${wpBaseUri}/wp-json/wp/v2/pages/2`)
             .then(res => {
-                console.log(res);
+                this.setState({ description: res.data.acf.description });
             })
             .catch(function(error) {
                 console.log(error);
             });
     }
+    componentDidMount() {
+        window.addEventListener("load", this.handleLeavePage);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener("load", this.handleLeavePage);
+    }
+
+    handleLeavePage = e => {
+        const statusElement = document
+            .getElementsByClassName("radioco_status")
+            .item(0);
+        if (statusElement) {
+            this.setState({ status: statusElement.innerHTML });
+            console.log(statusElement.innerHTML);
+        }
+    };
     render() {
         if (this.state.isLoading) {
             return <Loader />;
         }
         return (
             <div className="StartView">
-                <Header events={this.state.events} />
+                <Helmet title="Malmö Antenn">
+                    <meta property="og:title" content="Malmö Antenn" />
+                    <meta name="description" content={this.state.description} />
+                </Helmet>
+                <Header
+                    description={this.state.description}
+                    status={this.state.status}
+                />
                 <div className="Page-container">
                     <EventsList events={this.state.events} />
-                    <h2 className="Heading-medium">Archive</h2>
+                    <div>
+                        <h2 className="Heading-medium">Archive</h2>
+                    </div>
                     <MixList mixes={this.state.mixes.slice(0, 8)} isStartPage />
                     <div className="Pagination-buttonContainer">
                         <Link to="/archive">
-                            <button className="Button">See more</button>
+                            <button className="Button">Archive</button>
                         </Link>
                     </div>
                 </div>
