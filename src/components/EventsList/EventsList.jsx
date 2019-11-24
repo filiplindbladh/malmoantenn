@@ -5,9 +5,11 @@ const EventsList = ({ events }) => {
     return (
         <div>
             {events && events.length >= 1 && (
-                <h2 className="Heading-medium EventsList-heading">
-                    Upcoming Events
-                </h2>
+                <div>
+                    <h2 className="Heading-medium EventsList-heading">
+                        Upcoming Events
+                    </h2>
+                </div>
             )}
             <div className="EventsList">
                 {events &&
@@ -28,7 +30,7 @@ const EventsList = ({ events }) => {
                                     picture={
                                         event.image === false
                                             ? null
-                                            : event.image.sizes.medium.url
+                                            : event.image.url
                                     }
                                 />
                             </a>
@@ -46,7 +48,7 @@ const EventsList = ({ events }) => {
                                     picture={
                                         event.image === false
                                             ? null
-                                            : event.image.sizes.medium.url
+                                            : event.image.url
                                     }
                                 />
                             </div>
