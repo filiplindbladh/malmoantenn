@@ -1,13 +1,22 @@
-import React from "react";
+import React, { useRef } from "react";
 import "./MixCard.css";
 
 const MixCard = ({ url, picture, name, created, tags }) => {
+    const link = useRef();
+    const clickLink = () => link.current.click();
+
     if (!picture) {
         return null;
     }
 
     return (
-        <div data-mixcloud-play-button={url} className="MixCard">
+        <div
+            tabIndex={0}
+            data-mixcloud-play-button={url}
+            className="MixCard"
+            ref={link}
+            onKeyDown={e => e.key === "Enter" && clickLink()}
+        >
             <div className="MixCard-wrapper">
                 <div className="Card-imgWrapper">
                     <img className="Card-img" src={picture} alt={name}></img>

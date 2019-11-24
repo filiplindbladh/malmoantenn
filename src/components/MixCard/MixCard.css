@@ -1,11 +1,11 @@
 .MixCard {
     cursor: pointer;
-    padding-right: 24px;
 }
 
 .Card-imgWrapper {
     position: relative;
 }
+.MixCard:focus .Card-imgWrapper::before,
 .MixCard:hover .Card-imgWrapper::before {
     content: "\0025B6";
     color: white;
@@ -22,6 +22,16 @@
     transition: all 0.4s ease-in-out 0s;
 }
 
+.MixCard:focus .Date,
+.MixCard:hover .Date {
+    color: #8d3b72;
+}
+
+.MixCard:focus .Heading-small,
+.MixCard:hover .Heading-small {
+    color: #8d3b72;
+}
+
 @media only screen and (max-width: 440px) {
     .MixCard {
         padding-right: 0;
@@ -29,7 +39,7 @@
 }
 
 .Card-info {
-    padding-top: 16px;
+    padding: 16px 0;
 }
 
 .Card-img {
@@ -52,5 +62,4 @@
 }
 .Tags-container {
     display: flex;
-    margin-bottom: 16px;
 }
