@@ -1,6 +1,7 @@
 import React from "react";
 import EventCard from "../EventCard/EventCard";
 import "./EventsList.css";
+
 const EventsList = ({ events }) => {
     return (
         <div>
@@ -28,9 +29,11 @@ const EventsList = ({ events }) => {
                                     description={event.description}
                                     isLink
                                     picture={
-                                        event.image === false
-                                            ? null
-                                            : event.image.url
+                                        event.image.sizes
+                                            ? event.image.sizes.medium.url
+                                            : event.image
+                                            ? event.image.url
+                                            : null
                                     }
                                 />
                             </a>
@@ -46,9 +49,11 @@ const EventsList = ({ events }) => {
                                     title={event.title}
                                     description={event.description}
                                     picture={
-                                        event.image === false
-                                            ? null
-                                            : event.image.url
+                                        event.image.sizes
+                                            ? event.image.sizes.medium.url
+                                            : event.image
+                                            ? event.image.url
+                                            : null
                                     }
                                 />
                             </div>
