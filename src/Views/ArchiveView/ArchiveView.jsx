@@ -4,6 +4,7 @@ import axios from "axios";
 import { apiKey } from "../../apiKey";
 import Loader from "../../components/Loader/Loader";
 import { getAllMixes } from "./helpers";
+import { Helmet } from "react-helmet";
 
 export default class ArchiveView extends Component {
     constructor(props) {
@@ -74,12 +75,28 @@ export default class ArchiveView extends Component {
         }
         return (
             <div className="Page-container">
+                <Helmet title="Malmö Antenn">
+                    <meta property="og:title" content="Malmö Antenn Archives" />
+                    <meta
+                        name="description"
+                        content="Malmö Antenn is a small collective of music enthusiasts - aiming to connect music from around the globe."
+                    />
+                </Helmet>
                 <h1 className="Heading-medium">Archive</h1>
+                <label
+                    className="Hidden"
+                    id="search-label"
+                    htmlFor="search-input"
+                >
+                    Dig into our archives
+                </label>
                 <input
+                    id="search-input"
                     type="search"
                     className="input"
                     placeholder="Search"
                     value={this.state.search}
+                    aria-labelledby="search-label"
                     onChange={e => this.setState({ search: e.target.value })}
                 />
                 <MixList mixes={this.state.mixes} search={this.state.search} />
