@@ -2,7 +2,6 @@ import React from "react";
 import "./EventCard.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCalendar, faClock } from "@fortawesome/free-solid-svg-icons";
-import classNames from "classnames";
 
 const EventCard = ({
     picture,
@@ -11,14 +10,9 @@ const EventCard = ({
     startTime,
     endTime,
     description,
-    isLink,
 }) => {
-    let classes = classNames({
-        EventCard: true,
-        Highlighted: isLink,
-    });
     return (
-        <div className={classes}>
+        <div className="EventCard">
             {picture && (
                 <img
                     className="EventCard-image"

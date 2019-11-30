@@ -1,10 +1,11 @@
 import React, { useRef } from "react";
 import "./MixCard.css";
+import { useIsOnScreen } from "../../hooks/useIsOnScreen";
 
 const MixCard = ({ url, picture, name, created, tags }) => {
-    const link = useRef();
-    const clickLink = () => link.current.click();
-
+    const mixCard = useRef();
+    const click = () => mixCard.current.click();
+    const onScreen = useIsOnScreen(mixCard, "0px");
     if (!picture) {
         return null;
     }
@@ -14,12 +15,16 @@ const MixCard = ({ url, picture, name, created, tags }) => {
             tabIndex={0}
             data-mixcloud-play-button={url}
             className="MixCard"
-            ref={link}
-            onKeyDown={e => e.key === "Enter" && clickLink()}
+            ref={mixCard}
+            onKeyDown={e => e.key === "Enter" && click()}
         >
             <div className="MixCard-wrapper">
                 <div className="Card-imgWrapper">
-                    <img className="Card-img" src={picture} alt={name}></img>
+                    <img
+                        className="Card-img"
+                        src={onScreen ? picture.large : picture.thumbnail}
+                        alt={name}
+                    ></img>
                 </div>
                 <div className="Card-info">
                     <span className="Date">{created.replace(/-/g, ".")}</span>

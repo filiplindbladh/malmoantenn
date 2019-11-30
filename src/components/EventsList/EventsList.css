@@ -21,14 +21,12 @@
     cursor: auto;
 }
 
-@media only screen and (max-width: 1024px) {
-    .EventsList-listItem {
-        width: 50%;
+@media only screen and (max-width: 600px) {
+    .EventsList {
+        display: flex;
     }
-}
-
-@media only screen and (max-width: 440px) {
     .EventsList-listItem {
+        display: flex;
         width: 100%;
     }
 }

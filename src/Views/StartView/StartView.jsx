@@ -75,14 +75,25 @@ export default class StartView extends Component {
         }
         return (
             <div className="StartView">
-                <Helmet title="Malmö Antenn">
-                    <meta property="og:title" content="Malmö Antenn" />
-                    <meta name="description" content={this.state.description} />
+                <Helmet>
+                    <meta
+                        property="og:title"
+                        content="Malmö Antenn - A web based radio from Sweden"
+                    />
+                    <meta
+                        name="og:description"
+                        content={this.state.description}
+                    />
+                    <meta
+                        property="og:image"
+                        content="../../../public/favicon.ico"
+                    />
+                    <meta property="og:url" content="http://malmoantenn.se/" />
                 </Helmet>
                 <Header
                     description={this.state.description}
                     status={this.state.status}
-                    isLive={this.state.isLive}
+                    isLive={true}
                 />
                 <div className="Page-container">
                     <EventsList events={this.state.events} />

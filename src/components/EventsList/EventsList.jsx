@@ -39,7 +39,6 @@ const EventsList = ({ events }) => {
                                     endTime={event.end_date_details.hour}
                                     title={event.title}
                                     description={event.description}
-                                    isLink
                                     picture={
                                         event.image.sizes
                                             ? event.image.sizes.medium.url

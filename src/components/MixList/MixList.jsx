@@ -44,7 +44,7 @@ const MixList = ({ mixes, isStartPage, search = "" }) => {
                                 name={mix && mix.name}
                                 url={mix && mix.url}
                                 created={mix && mix.created_time.slice(0, 10)}
-                                picture={mix && mix.pictures.large}
+                                picture={mix && mix.pictures}
                                 tags={mix && mix.tags}
                                 key={mix && mix.created_time}
                             />
