@@ -10,6 +10,17 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 
 const Menu = () => {
+    const handleTracking = e => {
+        const dataLayer = (window.dataLayer = window.dataLayer || []);
+        dataLayer.push({
+            event: "social_link",
+            eventData: {
+                eventCategory: "Social Media",
+                eventAction: "Click",
+                eventLabel: e.target.href,
+            },
+        });
+    };
     return (
         <nav className="Menu">
             <ul className="Menu-navList">
@@ -27,18 +38,21 @@ const Menu = () => {
                 <a
                     href="https://www.instagram.com/malmoantenn/"
                     aria-label="Go to Malmö Antenn on Instagram"
+                    onClick={e => handleTracking(e)}
                 >
                     <FontAwesomeIcon icon={faInstagram} />
                 </a>
                 <a
                     href="https://www.facebook.com/mlmantenn/"
                     aria-label="Go to Malmö Antenn on Facebook"
+                    onClick={e => handleTracking(e)}
                 >
                     <FontAwesomeIcon icon={faFacebook} />
                 </a>
                 <a
                     href="https://www.mixcloud.com/malmoantenn/"
                     aria-label="Go to Malmö Antenn on Mixcloud"
+                    onClick={e => handleTracking(e)}
                 >
                     <FontAwesomeIcon icon={faMixcloud} />
                 </a>

@@ -3,6 +3,17 @@ import EventCard from "../EventCard/EventCard";
 import "./EventsList.css";
 
 const EventsList = ({ events }) => {
+    const handleTracking = e => {
+        const dataLayer = (window.dataLayer = window.dataLayer || []);
+        dataLayer.push({
+            event: "upcoming_event",
+            eventData: {
+                eventCategory: "Upcoming events",
+                eventAction: "Click",
+                eventLabel: e.target.innerHTML,
+            },
+        });
+    };
     return (
         <div>
             {events && events.length >= 1 && (
@@ -20,6 +31,7 @@ const EventsList = ({ events }) => {
                                 className="EventsList-listItem as-link"
                                 key={event.title}
                                 href={event.website}
+                                onClick={e => handleTracking(e)}
                             >
                                 <EventCard
                                     startDate={event.utc_start_date}

@@ -3,7 +3,7 @@ import Header from "../../components/Header/Header";
 import MixList from "../../components/MixList/MixList";
 import EventsList from "../../components/EventsList/EventsList";
 import axios from "axios";
-import { apiKey, wpBaseUri } from "../../apiKey";
+import { apiKey, wpBaseUri, mixlrApi } from "../../apiKey";
 import "./StartView.css";
 import { Link } from "react-router-dom";
 import Loader from "../../components/Loader/Loader";
@@ -18,6 +18,7 @@ export default class StartView extends Component {
             events: [],
             description: "",
             isLoading: true,
+            isLive: false,
             status: "",
         };
     }
@@ -49,13 +50,14 @@ export default class StartView extends Component {
             .catch(function(error) {
                 console.log(error);
             });
-    }
-    componentDidMount() {
-        window.addEventListener("load", this.handleLeavePage);
-    }
-
-    componentWillUnmount() {
-        window.removeEventListener("load", this.handleLeavePage);
+        axios
+            .get(mixlrApi)
+            .then(res => {
+                this.setState({ isLive: res.data.is_live });
+            })
+            .catch(function(error) {
+                console.log(error);
+            });
     }
 
     handleLeavePage = e => {
@@ -80,6 +82,7 @@ export default class StartView extends Component {
                 <Header
                     description={this.state.description}
                     status={this.state.status}
+                    isLive={this.state.isLive}
                 />
                 <div className="Page-container">
                     <EventsList events={this.state.events} />
