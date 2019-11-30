@@ -11,8 +11,8 @@ const LivePlayer = () => {
                 height="180px"
                 scrolling="no"
                 frameBorder="no"
-                marginheight="0"
-                marginwidth="0"
+                marginHeight="0"
+                marginWidth="0"
             ></iframe>
         </div>
     );

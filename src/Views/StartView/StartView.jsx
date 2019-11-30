@@ -93,7 +93,7 @@ export default class StartView extends Component {
                 <Header
                     description={this.state.description}
                     status={this.state.status}
-                    isLive={true}
+                    isLive={this.state.isLive}
                 />
                 <div className="Page-container">
                     <EventsList events={this.state.events} />
