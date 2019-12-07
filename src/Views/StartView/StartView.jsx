@@ -19,7 +19,6 @@ export default class StartView extends Component {
             description: "",
             isLoading: true,
             isLive: false,
-            status: "",
         };
     }
 
@@ -60,22 +59,13 @@ export default class StartView extends Component {
             });
     }
 
-    handleLeavePage = e => {
-        const statusElement = document
-            .getElementsByClassName("radioco_status")
-            .item(0);
-        if (statusElement) {
-            this.setState({ status: statusElement.innerHTML });
-            console.log(statusElement.innerHTML);
-        }
-    };
     render() {
         if (this.state.isLoading) {
             return <Loader />;
         }
         return (
             <div className="StartView">
-                <Helmet>
+                <Helmet title="Malmö Antenn - A web based radio from Sweden">
                     <meta
                         property="og:title"
                         content="Malmö Antenn - A web based radio from Sweden"
@@ -84,11 +74,12 @@ export default class StartView extends Component {
                         name="og:description"
                         content={this.state.description}
                     />
+                    <meta name="description" content={this.state.description} />
                     <meta
                         property="og:image"
-                        content="../../../public/favicon.ico"
+                        content="https://malmoantenn.se/favicon.ico"
                     />
-                    <meta property="og:url" content="http://malmoantenn.se/" />
+                    <meta property="og:url" content="https://malmoantenn.se/" />
                 </Helmet>
                 <Header
                     description={this.state.description}
