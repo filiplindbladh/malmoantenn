@@ -6,6 +6,9 @@ import "./css/index.css";
 import App from "./components/App/App";
 import * as serviceWorker from "./serviceWorker";
 
+import "core-js/stable";
+import "regenerator-runtime/runtime";
+
 ReactDOM.render(<App />, document.getElementById("root"));
 
 // If you want your app to work offline and load faster, you can change
