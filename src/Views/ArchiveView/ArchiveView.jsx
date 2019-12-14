@@ -101,14 +101,16 @@ export default class ArchiveView extends Component {
                 />
                 <MixList mixes={this.state.mixes} search={this.state.search} />
                 <div className="Pagination-buttonContainer">
-                    {this.state.next !== "" && this.state.search.length === 0 && (
-                        <button
-                            className="Button"
-                            onClick={e => this.paginate()}
-                        >
-                            Show more
-                        </button>
-                    )}
+                    {this.state.next !== "" &&
+                        this.state.search.length === 0 &&
+                        this.state.mixes.length !== 0 && (
+                            <button
+                                className="Button"
+                                onClick={e => this.paginate()}
+                            >
+                                Show more
+                            </button>
+                        )}
                 </div>
             </div>
         );

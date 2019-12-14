@@ -30,7 +30,14 @@ const MixList = ({ mixes, isStartPage, search = "" }) => {
             {mixes && filter(mixes).length === 0 ? (
                 <div className="MixList-Error">
                     <FontAwesomeIcon size="2x" icon={faExclamationTriangle} />
-                    <p>No results found for "{search}".</p>
+                    {search.length > 0 ? (
+                        <p>No results found for "{search}".</p>
+                    ) : (
+                        <p>
+                            Something went wrong. Make sure that your browser
+                            allows external connections to MixCloud.
+                        </p>
+                    )}
                 </div>
             ) : (
                 <Masonry
